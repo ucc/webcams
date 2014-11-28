@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+# Written by [SLX] and [BG3]
+# Because we finally can get rid of camwhore
+# 20140509
+
+cd /home/other/webcam
+#sleep 5
+#wget --http-user="admin" --http-password="[INSERTREALPASSWORDHERE]" "$1" -O $2.jpg.tmp 2> /dev/null
+curl -u admin:admin $1 -o $2.jpg.tmp 2> /dev/null
+if [[ -s $2.jpg.tmp ]]; then
+  #grep "Auth" $2.jpg.tmp
+  #if [ $? = "0" ]; then
+    #rm $2.jpg.tmp
+  #fi 
+fi
+if [[ -s $2.jpg.tmp ]]; then
+  #mv $2.jpg.tmp $2.jpg
+  label=$(date +"%d/%m/%y %H:%M:%S")
+  fontargs="-font Inconsolata-Medium -pointsize 12 -undercolor black"
+  convert $2.jpg.tmp ${=fontargs} -draw "gravity northwest fill white text 0,0 ' $3 - ${label} '" $2.jpg
+  exiftool -comment="'$2 - ${label} - $3'" $2.jpg 1> /dev/null
+  rm $2.jpg.tmp
+fi
+#echo "done"

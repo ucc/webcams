@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+cd /home/other/webcam
+sleep 5
+for i in 1 2; do
+  wget http://camwhore.ucc.gu.uwa.edu.au:8990/$1 -O $2.jpg.tmp 2> /dev/null
+  if [[ -s $2.jpg.tmp ]]; then
+    mv $2.jpg.tmp $2.jpg
+  fi
+  sleep 30
+done
