@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- This is the new Javascript based webcams page by [PXY],
+     who was sick of the page reloads -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <title>UCC Webcams</title>
+  <noscript>
+   <meta http-equiv="refresh" content="0;URL=index-nojs.php" />
+  </noscript>
+  <link rel="stylesheet" href="https://secure.ucc.asn.au/~planet/planet.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="webcam-overrides.css" type="text/css" media="screen" />
+  <link rel="icon" type="image/png" href="//planet.ucc.asn.au/icon.png" />
+  <link rel="SHORTCUT ICON" type="image/png" href="//planet.ucc.asn.au/icon.png" />
+  <script type="text/javascript">
+var iambob = false;
+
+function bobbify()
+{
+	iambob = !iambob;
+	if (iambob)
+	{
+		document.getElementById("iambob").innerHTML = "I Am Not Bob";
+		var selects = document.getElementsByClassName('camera');
+		for(var i = 0, il = selects.length;i < il; i++)
+		{
+			selects[i].style.width = "600px";
+		}
+	}
+	else
+	{
+		document.getElementById("iambob").innerHTML = "I Am Bob";
+		var selects = document.getElementsByClassName('camera');
+		for(var i = 0, il = selects.length;i < il; i++)
+		{
+			selects[i].style.width = "";
+		}
+	}
+	updateTime();
+}
+
+function windowOnload()
+{
+	updateTime();
+	setInterval("updateTime()",15000);
+}
+
+function updateWebcam (webcamid, webcamurl)
+{
+	var date = new Date ();
+	var fullwebcamurl = webcamurl + "?t" + date.getTime ();
+	var img = document.getElementById (webcamid);
+
+	// get an XML HTTP Request object
+	var req = false;
+	try
+	{
+		req = new XMLHttpRequest ();
+	}
+	catch (e)
+	{
+		try
+		{
+			req = new ActiveXObject ("Microsoft.XMLHTTP");
+		}
+		catch (e)
+		{
+		}
+	}
+
+	if (req)
+	{
+		req.onreadystatechange = function ()
+		{
+			if (req.readyState == 4)
+			{
+				if (req.status == 200 || req.status == 304)
+				{
+					var imgdate = new Date (Date.parse (req.getResponseHeader ("Last-Modified")));
+					var servdate = new Date (Date.parse (req.getResponseHeader ("Date")));
+					if (Math.abs (imgdate.getTime () - servdate.getTime ()) > 1000 * 60 * 2)
+					{
+						// this image is out of date
+						img.style.opacity = 0.75;
+						if (iambob)
+						{
+							img.style.border = "0px solid red";
+						}
+						else
+						{
+							img.style.border = "4px solid red";
+						}
+					}
+					else
+					{
+						img.style.opacity = 1.0;
+						if (iambob)
+						{
+							img.style.border = "0px solid transparent";
+						}
+						else
+						{
+							img.style.border = "4px solid transparent";
+						}
+					}
+				}
+			}
+			
+		};
+
+		req.open ("HEAD", fullwebcamurl, true);
+		req.send ("");
+	}
+	
+	// set the image
+	//img.src = "http://www.ucc.asn.au/~webcam/" + fullwebcamurl;
+	img.src = fullwebcamurl;
+}
+
+function updateTime()
+{
+	var date = new Date ();
+	//updateWebcam ("webcam3", "webcam3.jpg");
+	//updateWebcam ("webcam4", "bw-webcam.jpg");
+	//updateWebcam ("webcam1", "webcam.jpg");
+	//updateWebcam ("webcam2", "webcam1.jpg");
+	//updateWebcam ("uvc1", "uvc1.jpg");
+	updateWebcam ("ipcamera1", "ipcamera1.jpg");
+	updateWebcam ("ipcamera2", "ipcamera2.jpg");
+	updateWebcam ("ipcamera3", "ipcamera3.jpg");
+	updateWebcam ("ipcamera4", "ipcamera4.jpg");
+	updateWebcam ("ipcamera5", "ipcamera5.jpg");
+	updateWebcam ("ipcamera6", "ipcamera6.jpg");
+
+}
+</script>
+<style>
+.camera {
+	margin: 4px;
+	/*padding: 20px;*/
+	margin-left: auto;
+	margin-right: auto;
+	display: inline-block;
+	font-size: 0;
+}
+.header {
+	background: none;
+}
+</style>
+</head>
+ <body onload="windowOnload()">
+<div class="header">
+<img alt="Planet UCC" id="pucc_logo"
+     src="//www.ucc.asn.au/images/ucc_logo.gif" />
+<div id="globalnav-wrapper">
+ <ul id="portal-globalnav">
+
+  <li id="portaltab-index_html" class="plain">
+   <a href="http://www.ucc.asn.au">Home</a>
+  </li>
+  <li id="portaltab-aboutucc" class="plain">
+   <a href="http://www.ucc.asn.au/aboutucc/">About Us</a>
+  </li>
+
+  <li id="portaltab-infobase" class="plain">
+
+   <a href="http://www.ucc.asn.au/infobase/">Information</a>
+  </li>
+  <li id="portaltab-services" class="plain">
+   <a href="http://www.ucc.asn.au/services/">Services</a>
+  </li>
+  <li id="portaltab-events" class="plain">
+   <a href="http://wiki.ucc.asn.au/Events/">Events</a>
+
+  </li>
+  <li id="portaltab-planetucc" class="plain">
+   <a href="//planet.ucc.asn.au/">Planet UCC</a>
+  </li>     
+  <li id="portaltab-planetucc" class="plain">
+   <a href="http://wiki.ucc.asn.au/">Wiki</a>
+  </li>     
+ </ul>
+</div>
+</div>
+<div class="items">
+ <h1>UCC Webcams</h1>
+ <div class="navMenu">
+  <a href="archive.html">Archive</a>
+  <a href="http://webcam.ucc.asn.au/clubroom-schematic.png">Map</a>
+  <a href="index-nojs.php" title="Non-Javascript Webcam Page">Web0 Version</a>
+ </div>
+</div>
+<div class=camSection>
+ <div style="margin-left: auto;margin-right: auto;"><small><a href="javascript:bobbify();" id="iambob">I Am Bob</a></small></div>
+ <!--<div style="margin-left: auto;margin-right: auto;"><small>UCC webcams running off <a href="http://www.ucc.gu.uwa.edu.au/machines/">Camwhore</a></small></div>-->
+ <!--<div class="camera"><a href="bw-webcam.php"><img id="webcam4" alt="BW Webcam" /></a></div>
+ <div class="camera"><a href="webcam3.php"><img id="webcam3" alt="Webcam 3" /></a></div>
+ <div class="camera"><a href="webcam1.php"><img id="webcam2" alt="Webcam 1" /></a></div>
+ <div class="camera"><a href="uvc1.php"><img id="uvc1" alt="UVC 1" /></a></div>
+ <div class="camera"><a href="webcam.php"><img id="webcam1" alt="Webcam 2" /></a></div>-->
+ <div class="camera"><a href="ipcamera1.php"><img id="ipcamera1" alt="IPCamera1" /></a></div>
+ <div class="camera"><a href="ipcamera2.php"><img id="ipcamera2" alt="IPCamera2" /></a></div>
+ <div class="camera"><a href="ipcamera3.php"><img id="ipcamera3" alt="IPCamera3" /></a></div>
+ <div class="camera"><a href="ipcamera4.php"><img id="ipcamera4" alt="IPCamera4" /></a></div>
+ <div class="camera"><a href="ipcamera5.php"><img id="ipcamera5" alt="IPCamera5" /></a></div>
+ <div class="camera"><a href="ipcamera6.php"><img id="ipcamera6" alt="IPCamera6" /></a></div>
+</div>
+ <div class="clear"></div>
+<div class="footer">
+  <p><small>Copyright 1993-<span id="copyright">2014</span>, The University Computer Club Inc.
+  &lt;<a href="mailto:webmasters@ucc">webmasters@ucc</a>&gt;<br />
+  Written to be <a href="http://www.w3c.org/">specifications compliant</a>.
+  </small></p>
+  <p class="logos" style="text-align: center;">
+    <a href="http://www.ucc.asn.au">
+    <img style="padding-bottom:1ex;" src="//www.ucc.asn.au/images/ucc-sun-logo-black.png" alt="UCC" title="University Computer Club" />
+    </a>
+    <a href="http://www.gu.uwa.edu.au">
+    <img alt="Guild of Undergraduates" title="UWA Guild of Undergraduates" style="padding-bottom:1ex;" src="//www.ucc.asn.au/images/guild/spot2001-blue.png" />
+    </a>
+    <a href="http://www.uwa.edu.au">
+    <img alt="University of Western Australia" title="University of Western Australia" src="//www.ucc.asn.au/images/uwa_crest.png" />
+    </a>
+  </p>
+</div>
+ <script type="text/javascript">
+ var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+ </script>
+ <script type="text/javascript">
+ try {
+ var pageTracker = _gat._getTracker("UA-11604699-1");
+ pageTracker._setDomainName("none");
+ pageTracker._setAllowLinker(true);
+ pageTracker._trackPageview();
+ } catch(err) {}</script>
+ <script type="text/javascript">
+  document.getElementById("copyright").innerhtml = new Date().getFullYear();
+ </script>
+ </body>
+</html>

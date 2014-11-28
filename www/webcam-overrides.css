@@ -1,0 +1,114 @@
+/*this page should override some of the older/shittier stuff in planet.ucc's css */
+/*[BOB]'s first css mangling*/
+
+table {
+  border-width: 1px;
+  border-style: none;
+  padding: 1ex;
+  margin-left: auto;
+  margin-right: auto;
+ }
+ td {
+  border-style: none;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+ }
+ th {
+  border-style: none;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+ }
+ img {
+  border-style: none;
+  margin: 0;
+  padding: 0;
+ }
+
+ /* hack for browser-side compositing - MSH+SJH */
+#webcambox {
+  position:relative;
+  width: 384px;
+  height: 288px;
+  padding: 0;
+  margin: 0;
+}
+#datetime {
+  position:absolute;
+  max-width: 192px;
+  max-height: 11px;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+#scaleimage {
+  width: 384px;
+  height: 288px;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+/*the navigation stuff for the archives page*/
+div.nav {
+  position: fixed;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color:#ffce7b;
+  border-top:1px solid #ffa500;
+  padding: 0.2ex;
+  padding-bottom: 0.7ex;
+}
+
+p.broken {
+  background-color:#ffafaf;
+  border:1px solid #ff0000;
+  padding: 0.5ex;
+}
+
+div.nav table {
+  font-size: 75%;
+  width: 100%;
+  padding: 0;
+  border-spacing: 0;
+}
+div.nav form {
+  margin-bottom: 0;
+}
+body {
+  padding-bottom: 4.5em;
+}
+.navMenu {
+  margin-left:20px;
+}
+
+.navMenu a {
+  padding-right:5px;
+}
+.navMenu a:visited { color:#00E; }
+
+.camSection {
+  margin-left:auto;
+  margin-right:auto;
+  text-align: center;
+}
+
+.camSection p {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+}
+
+.clear {
+  clear:both;
+}
+
+/*gets around planet making room on the right for the sidebar*/
+.items {
+  padding-right: 0;
+}

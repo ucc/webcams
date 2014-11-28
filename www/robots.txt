@@ -1,0 +1,5 @@
+User-agent: sitecheck.internetseer.com
+Disallow: /
+
+User-agent: *
+Disallow: /
