@@ -1,55 +1,38 @@
-/*this page should override some of the older/shittier stuff in planet.ucc's css */
-/*[BOB]'s first css mangling*/
+.camsection{
+	font-size: 0;
+}
+.camera {
+	width: 620px;
+	height: 465px;
+	margin: 0px;
+	overflow: hidden;
+	/*padding: 20px;*/
+	margin-left: auto;
+	margin-right: auto;
+	display: inline-block;
+	font-size: 0;
+}
 
-table {
-  border-width: 1px;
-  border-style: none;
-  padding: 1ex;
-  margin-left: auto;
-  margin-right: auto;
- }
- td {
-  border-style: none;
+.camera img {
+	display: block;
+	max-width: 100%
+}
+
+.header {
+	background: none;
+}
+
+.camSection {
+  margin-left:auto;
+  margin-right:auto;
   text-align: center;
-  padding: 0;
-  margin: 0;
- }
- th {
-  border-style: none;
-  font-style: italic;
-  font-weight: normal;
-  font-size: 75%;
- }
- img {
-  border-style: none;
-  margin: 0;
-  padding: 0;
- }
+}
 
- /* hack for browser-side compositing - MSH+SJH */
-#webcambox {
-  position:relative;
-  width: 384px;
-  height: 288px;
-  padding: 0;
-  margin: 0;
+body {
+	padding-bottom: 4.5em;
 }
-#datetime {
-  position:absolute;
-  max-width: 192px;
-  max-height: 11px;
-  left: 0;
-  top: 0;
-  z-index: 2;
-  overflow: hidden;
-}
-#scaleimage {
-  width: 384px;
-  height: 288px;
-  left: 0;
-  top: 0;
-  z-index: 1;
-}
+
+/* Haven't touched anything below this */
 
 /*the navigation stuff for the archives page*/
 div.nav {
@@ -65,12 +48,6 @@ div.nav {
   padding-bottom: 0.7ex;
 }
 
-p.broken {
-  background-color:#ffafaf;
-  border:1px solid #ff0000;
-  padding: 0.5ex;
-}
-
 div.nav table {
   font-size: 75%;
   width: 100%;
@@ -80,9 +57,7 @@ div.nav table {
 div.nav form {
   margin-bottom: 0;
 }
-body {
-  padding-bottom: 4.5em;
-}
+
 .navMenu {
   margin-left:20px;
 }
@@ -92,23 +67,10 @@ body {
 }
 .navMenu a:visited { color:#00E; }
 
-.camSection {
-  margin-left:auto;
-  margin-right:auto;
-  text-align: center;
-}
-
-.camSection p {
-  font-style: italic;
-  font-weight: normal;
-  font-size: 75%;
-}
-
-.clear {
-  clear:both;
-}
-
-/*gets around planet making room on the right for the sidebar*/
+/*
+gets around planet making room on the right for the sidebar
+Really need a generic res.ucc css file that we add to instead of subtract from
+*/
 .items {
   padding-right: 0;
 }
