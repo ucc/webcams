@@ -255,7 +255,7 @@ function updateWebcam (webcamid, webcamurl)
                                 if (req.status == 200 || req.status == 304)
 				{
 					//img.parentNode.style.backgroundColor = "transparent";
-					div.style.display = 'inline';
+					div.style.display = 'inline-block';
 					//setAlt (img, "");
                                 }
 				else
