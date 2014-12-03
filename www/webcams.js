@@ -8,7 +8,7 @@ function updateWebcam (webcamid, webcamurl)
 {
 	var date = new Date ();
 	var fullwebcamurl = webcamurl + "&t" + date.getTime ();
-	var img = document.getElementById (webcamid);
+	var img = document.getElementById(webcamid);
 
 	// get an XML HTTP Request object
 	var req = false;
@@ -40,27 +40,11 @@ function updateWebcam (webcamid, webcamurl)
 					if (Math.abs (imgdate.getTime () - servdate.getTime ()) > 1000 * 60 * 2)
 					{
 						// this image is out of date
-						img.style.opacity = 0.75;
-						if (iambob)
-						{
-							img.style.border = "0px solid red";
-						}
-						else
-						{
-							img.style.border = "4px solid red";
-						}
+						img.classList.add('offline');
 					}
 					else
 					{
-						img.style.opacity = 1.0;
-						if (iambob)
-						{
-							img.style.border = "0px solid transparent";
-						}
-						else
-						{
-							img.style.border = "4px solid transparent";
-						}
+						img.classList.remove('offline');
 					}
 				}
 			}
