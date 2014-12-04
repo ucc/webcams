@@ -1,7 +1,7 @@
 function windowOnload()
 {
 	updateTime();
-	setInterval("updateTime()",15000);
+	setInterval("updateTime()", 15000);
 }
 
 function updateWebcam (webcamid, webcamurl)
@@ -37,13 +37,17 @@ function updateWebcam (webcamid, webcamurl)
 				{
 					var imgdate = new Date (Date.parse (req.getResponseHeader ("Last-Modified")));
 					var servdate = new Date (Date.parse (req.getResponseHeader ("Date")));
-					if (Math.abs (imgdate.getTime () - servdate.getTime ()) > 1000 * 60 * 2)
+					if (Math.abs (imgdate.getTime () - servdate.getTime ()) > 1000 * 60 * 3)
 					{
+						console.log("Out Of Sync");
+						console.log("imgdate: " + imgdate);
+						console.log("servdate: " + servdate);
 						// this image is out of date
 						img.classList.add('offline');
 					}
 					else
 					{
+						//console.log("In Sync");
 						img.classList.remove('offline');
 					}
 				}
