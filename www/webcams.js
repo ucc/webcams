@@ -72,4 +72,5 @@ function updateTime()
 	updateWebcam ("ipcamera4", "camera.php?camera=ipcamera4");
 	updateWebcam ("ipcamera5", "camera.php?camera=ipcamera5");
 	updateWebcam ("ipcamera6", "camera.php?camera=ipcamera6");
+	updateWebcam ("ipcamera7", "camera.php?camera=ipcamera7");
 }

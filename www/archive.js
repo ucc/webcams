@@ -303,6 +303,7 @@ function setDate()
 	updateWebcam ("ipcamera4", "/archive/ipcamera4/" + image);
 	updateWebcam ("ipcamera5", "/archive/ipcamera5/" + image);
 	updateWebcam ("ipcamera6", "/archive/ipcamera6/" + image);
+	updateWebcam ("ipcamera7", "/archive/ipcamera7/" + image);
 	//setTimeout("clearText()",1000);
 }
 

@@ -1,12 +1,13 @@
 #!/bin/zsh
 # Get all images
 #for i in 1 2 3 4; do
-  /home/other/webcam/webcam-grab "http://ipcamera1/snapshot.cgi" "ipcamera1" "Clubroom_SW"
-  /home/other/webcam/webcam-grab "http://ipcamera2/snapshot.cgi" "ipcamera2" "Machine_Room_SW"
+  /home/other/webcam/webcam-grab "http://ipcamera1/image.jpg" "ipcamera1" "Clubroom_SW"
+  /home/other/webcam/webcam-grab "http://ipcamera2/image.jpg" "ipcamera2" "Machine_Room_SW"
   /home/other/webcam/webcam-grab "http://ipcamera3/image.jpg" "ipcamera3" "Clubroom_SE"
   /home/other/webcam/webcam-grab "http://ipcamera4/image.jpg" "ipcamera4" "Machine_Room_SE"
   /home/other/webcam/webcam-grab "http://ipcamera5/image.jpg" "ipcamera5" "Clubroom_N"
   /home/other/webcam/webcam-grab "http://ipcamera6/image.jpg" "ipcamera6" "UniGames"
+  /home/other/webcam/webcam-grab "http://ipcamera7/snapshot.cgi" "ipcamera7" "Machine Room"
   #/home/other/webcam/webcam-grab "http://ipcamera3/image.jpg" "webcam1" "Clubroom_SE"
   #/home/other/webcam/camwhore-grab Machine_Room_SW.jpg bw-webcam
   #/home/other/webcam/camwhore-grab Machine_Room_SE.jpg webcam3
